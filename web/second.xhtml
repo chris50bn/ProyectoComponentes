@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <body>
+        <div> <font class="position" color="green"> #{beanMensaje.msj}</font></div><br/><br/>
+        <div >
+            <div>
+                <div>
+                    <a id="test">
+                        <img class="demo-box" src="http://www.carte-du-monde.net/pays/costa-rica/costa-rica.jpg" height="500"/>
+                    </a>
+                    <a id="marker">
+                        <img src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" style="display: none; position: absolute" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <script>
+
+      
+    $(function() {
+        $("#test").click(function(e) {
+            var offset = $(this).offset();
+            var relativeX = (e.pageX - offset.left);
+            var relativeY = (-1*(e.pageY - offset.top));
+            alert('Posiciones '+' X='+relativeX+' y '+' Y='+relativeY);
+            $(".position").val("afaf");
+            document.getElementById('test').onload = put_marker(relativeX, relativeY);
+            function put_marker(relativeX,relativeY) {
+            with(document.getElementById('marker')) {
+                style.left = relativeX + "px";
+                style.top = relativeY + "px";
+                style.display = "block";
+            }
+        }
+        
+              
+        }); 
+
+     });
+    
+    </script>
+    <h:panelGrid>
+        <h:inputTextarea>
+            
+        </h:inputTextarea>
+    </h:panelGrid>
+    </body>
+</html>
